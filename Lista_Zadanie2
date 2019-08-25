@@ -1,0 +1,32 @@
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Map;
+
+public class Listy2 {
+    public static void main(String[] args) {
+
+        String name1 = "";
+        String name2 = "";
+        String name3 = "";
+        Scanner scanner = new Scanner(System.in);
+        Map<String,String> pairOfNames = new HashMap<>();
+
+        System.out.println("You must write two names, to break write -");
+
+        do{
+            System.out.println("Write 1st name: ");
+            name1 = scanner.nextLine();
+            System.out.println("Write 2nd name: ");
+            name2 = scanner.nextLine();
+            pairOfNames.put(name1,name2);
+        }while (!name1.equals("-"));
+
+        System.out.println("Write a name, and i will receive pair for you: ");
+        name3 = scanner.nextLine();
+        if(!pairOfNames.containsKey(name3))
+        {
+            System.out.println("Nie ma takiego imienia!!!");
+        }else System.out.println(pairOfNames.get(name3));
+    }
+}
