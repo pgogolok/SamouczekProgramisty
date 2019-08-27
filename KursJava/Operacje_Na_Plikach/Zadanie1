@@ -1,0 +1,33 @@
+package pl.samouczekprogramisty.kursjava.operacjenaplikach;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class SaveData {
+
+    public static void main(String[] args) throws IOException {
+
+        String filePath;
+        String textLine;
+        FileWriter fileWriter = null;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Write a path to the file: ");
+        filePath = scanner.nextLine();
+
+        try {
+            fileWriter = new FileWriter(filePath);
+            do {
+                System.out.println("Wirte a line of text: (\"-\" end texting)");
+                textLine = scanner.nextLine();
+                fileWriter.write(textLine);
+                fileWriter.write(System.lineSeparator());
+            } while (!textLine.equals("-"));
+        } finally {
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+        }
+    }
+}
