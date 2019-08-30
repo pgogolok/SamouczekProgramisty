@@ -1,0 +1,37 @@
+package pl.samouczekprogramisty.kursjava.operacjenaplikach;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class OpenData {
+    public static void main(String[] args) throws IOException {
+        BufferedReader fileReader = null;
+        String text;
+        int lines = 0;
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Podaj ścieżkę do pliku: ");
+        String filepath = scanner.nextLine();
+
+        try {
+            fileReader = new BufferedReader(new FileReader(filepath));
+            while (true) {
+                text = fileReader.readLine();
+                if (text == null) {
+                    break;
+                }
+                System.out.println(text);
+                lines++;
+            }
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
+        }
+        System.out.print("Liczba linii tekstu: " + lines);
+    }
+}
