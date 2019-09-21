@@ -1,0 +1,31 @@
+package pl.samouczekprogramisty.kursjava.TryWithResources;
+
+public class HtmlTag implements AutoCloseable {
+
+    private String tagName;
+
+    public HtmlTag(String tagName) {
+        this.tagName = tagName;
+        System.out.println("< " + tagName + " >");
+    }
+
+    public void body(String s) {
+        System.out.println(s);
+    }
+
+    public void close() {
+        System.out.println("</ " + tagName + "<>");
+
+    }
+
+    public static void main(String[] args) {
+        try (
+                HtmlTag h1 = new HtmlTag("h1");
+                HtmlTag em = new HtmlTag("em")
+        ) {
+            em.body("moj tekst");
+        }
+    }
+}
+
+
